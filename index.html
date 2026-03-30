@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Senac - Protótipo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="app">
+    <section id="loginScreen" class="screen is-active login-layout shell">
+      <div class="login-left">
+        <div class="login-overlay"></div>
+        <div class="login-overlay-2"></div>
+        <div class="login-brand-content">
+          <div class="senac-logo">Senac</div>
+          <h1>Excelência na<br>Educação Profissional</h1>
+          <p>Transformando vidas através do conhecimento e preparando você para os desafios do mercado global.</p>
+        </div>
+      </div>
+      <div class="login-right">
+        <div class="login-card">
+          <h2>Bem-vindo ao Portal Acadêmico</h2>
+          <p class="muted">Acesse sua conta para gerenciar protocolos e horas complementares.</p>
+          <form id="loginForm" class="form">
+            <label>USUÁRIO OU E-MAIL</label>
+            <input type="text" placeholder="Digite seu acesso" required>
+            <label>SENHA</label>
+            <input type="password" placeholder="••••••••" required>
+            <button type="submit" class="btn-primary btn-full">Entrar</button>
+          </form>
+          <a class="forgot" href="#" aria-label="Esqueci minha senha">Esqueci minha senha</a>
+          <div class="login-footer-links">
+            <a href="#">SUPORTE</a>
+            <a href="#">TERMOS DE USO</a>
+            <a href="#">PRIVACIDADE</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="panelScreen" class="screen panel-layout shell">
+      <aside class="sidebar">
+        <div>
+          <div class="brand">
+            <h3>Senac</h3>
+            <small>Gestão de Horas</small>
+          </div>
+          <nav class="side-nav">
+            <button class="side-btn is-active" data-view="dashboardView">Dashboard</button>
+            <button class="side-btn" data-view="protocolsView">Protocolos</button>
+            <button class="side-btn" data-view="studentsView">Alunos</button>
+            <button class="side-btn" data-view="certificatesView">Certificados</button>
+            <button class="side-btn" data-view="rulesView">Regulamento</button>
+            <button class="side-btn" data-view="settingsView">Configurações</button>
+          </nav>
+        </div>
+        <div class="profile">
+          <strong>Dr. Ricardo Silva</strong>
+          <small>Coordenador Acadêmico</small>
+          <button id="logoutBtn" class="link-btn">Sair</button>
+        </div>
+      </aside>
+
+      <div class="workspace">
+        <header class="topbar">
+          <div class="tabs">
+            <button class="tab is-active" data-view="dashboardView">Início</button>
+            <button class="tab" data-view="protocolsView">Horas</button>
+            <button class="tab" data-view="certificatesView">Certificados</button>
+            <button class="tab" data-view="rulesView">Dúvidas</button>
+          </div>
+          <div class="topbar-right">
+            <input class="search" type="text" placeholder="Buscar alunos, protocolos...">
+            <button class="icon-btn"></button>
+            <button class="icon-btn"></button>
+            <button class="btn-primary">Novo Protocolo</button>
+          </div>
+        </header>
+
+        <section id="dashboardView" class="view is-active">
+          <p class="page-mini-title">Dashboard Geral (Senac)</p>
+          <p class="kicker">VISÃO GERAL ACADÊMICA</p>
+          <div class="title-row">
+            <h2>Dashboard</h2>
+            <div class="semester-note">Semestre Letivo 2024.1<br><small>Atualizado há 12 minutos</small></div>
+          </div>
+          <div class="stats-grid">
+            <article class="card stat">
+              <h4>PROTOCOLOS PENDENTES</h4>
+              <strong>42</strong>
+              <span class="danger">+12% vs. ontem</span>
+            </article>
+            <article class="card stat">
+              <h4>ALUNOS HORAS FALTANTES</h4>
+              <strong>128</strong>
+              <span class="muted">-5% estático</span>
+            </article>
+            <article class="card stat">
+              <h4>MÉDIA DE HORAS / CURSO</h4>
+              <strong class="warning">84.5</strong>
+              <span class="muted">h/semestre</span>
+            </article>
+          </div>
+          <div class="content-grid">
+            <article class="card chart-card">
+              <h3>Envios por Categoria</h3>
+              <div class="bar-row"><span>Extensão</span><div><i style="width:82%"></i></div></div>
+              <div class="bar-row"><span>Pesquisa</span><div><i style="width:55%"></i></div></div>
+              <div class="bar-row"><span>Culturais</span><div><i style="width:37%"></i></div></div>
+              <div class="bar-row"><span>Monitoria</span><div><i style="width:68%"></i></div></div>
+            </article>
+            <article class="card feed">
+              <h3>Últimas Atividades</h3>
+              <ul>
+                <li><strong>Ana Beatriz</strong> enviou certificado</li>
+                <li><strong>Alerta de Prazo:</strong> 15 alunos em risco</li>
+                <li><strong>Protocolo #882</strong> aprovado</li>
+              </ul>
+            </article>
+          </div>
+          <div class="report-row">
+            <article class="card report-card">
+              <h3>Relatório Consolidado</h3>
+              <p>Gere a análise completa de desempenho das turmas para o conselho acadêmico.</p>
+              <button class="btn-link">BAIXAR PDF</button>
+            </article>
+          </div>
+        </section>
+
+        <section id="protocolsView" class="view">
+          <p class="page-mini-title">Gestão de Protocolos (Senac)</p>
+          <p class="kicker">GESTÃO ACADÊMICA</p>
+          <div class="title-row">
+            <h2>Protocolos de Atividade</h2>
+            <div class="protocol-kpi">
+              <div><strong>142</strong><small>PENDENTES</small></div>
+              <div><strong>1,284</strong><small>PROCESSADOS</small></div>
+            </div>
+          </div>
+          <p class="section-description">Central de curadoria para validação de horas complementares. Analise, revise e aprove as solicitações submetidas pelo corpo discente.</p>
+          <div class="card table-card">
+            <div class="table-head">
+              <div class="filters">
+                <select><option>Todos os Cursos</option></select>
+                <select><option>Todos Status</option></select>
+                <select><option>Últimos 30 dias</option></select>
+              </div>
+              <button class="btn-outline">Mais filtros</button>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Aluno</th>
+                  <th>Curso</th>
+                  <th>Tipo</th>
+                  <th>Horas</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>#PRT-8821</td><td>Alice Moreira</td><td>ADS</td><td>Palestra</td><td>04h</td><td><span class="tag pending">Pendente</span></td></tr>
+                <tr><td>#PRT-8819</td><td>Bruno Henrique</td><td>ADS</td><td>Estágio</td><td>40h</td><td><span class="tag approved">Aprovado</span></td></tr>
+                <tr><td>#PRT-8815</td><td>Carla Castro</td><td>ADS</td><td>Monitoria</td><td>20h</td><td><span class="tag denied">Reprovado</span></td></tr>
+              </tbody>
+            </table>
+            <div class="table-foot">
+              <span>Mostrando 1 a 3 de 142 protocolos</span>
+              <div class="pager"><button>1</button><button>2</button><button>3</button></div>
+            </div>
+          </div>
+          <div class="protocol-bottom-cards">
+            <article class="card light-info">
+              <h3>Atenção Necessária</h3>
+              <p>Existem 12 protocolos com mais de 15 dias sem movimentação.</p>
+            </article>
+            <article class="card dark-image">
+              <h3>Relatórios Mensais</h3>
+              <p>Exportar dados consolidados para o MEC e conselhos regionais.</p>
+            </article>
+            <article class="card curation-card">
+              <h3>Guia de Curadoria</h3>
+              <p>Confira a carga horária máxima por categoria e valide autenticidade.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="certificatesView" class="view">
+          <p class="page-mini-title">Análise de Certificado (Senac)</p>
+          <h2>Análise de Certificado</h2>
+          <p class="section-description">Protocolo #2023-AF82 • Atividade Complementar de Extensão Universitária</p>
+          <div class="certificate-layout">
+            <article class="card certificate-preview">
+              <h3>CERTIFICADO</h3>
+              <p>Certificamos que o aluno <strong>Gabriel Medeiros</strong> participou com êxito da atividade complementar.</p>
+              <p class="hours">40 Horas</p>
+            </article>
+            <article class="certificate-panel">
+              <div class="protocol-meta card">
+                <h5>INFORMAÇÕES DO PROTOCOLO</h5>
+                <p><strong>Gabriel Medeiros de Oliveira</strong><br>RA: 2209384 • 7º semestre</p>
+                <div class="mini-stats">
+                  <span>40h 00m</span>
+                  <span>CURSO LIVRE</span>
+                </div>
+              </div>
+              <h4>Parecer do Coordenador</h4>
+              <label>Carga horária deferida</label>
+              <input type="number" value="40">
+              <label>Observações</label>
+              <textarea placeholder="Justifique o parecer..."></textarea>
+              <div class="button-row">
+                <button class="btn-danger">Reprovar</button>
+                <button class="btn-primary">Aprovar</button>
+              </div>
+              <div class="warning-note">IMPORTANTE: Certificados de cursos online precisam conter o CNPJ da instituição emissora.</div>
+            </article>
+          </div>
+        </section>
+
+        <section id="settingsView" class="view">
+          <p class="page-mini-title">Configurações (super admin)</p>
+          <p class="kicker">ADMINISTRAÇÃO DO SISTEMA</p>
+          <h2>Painel de Configurações Globais &amp; Permissões</h2>
+          <div class="settings-grid">
+            <article class="card">
+              <h3>Novo Tipo de Atividade</h3>
+              <form class="form compact">
+                <label>Nome da atividade</label>
+                <input type="text" placeholder="ex: Monitoria Voluntária">
+                <label>Peso de horas</label>
+                <input type="number" placeholder="1.0">
+                <button type="button" class="btn-primary">Cadastrar atividade</button>
+              </form>
+            </article>
+            <article class="card limits-card">
+              <h3>Limites por Curso</h3>
+              <div class="limit-row"><span>Engenharia Civil</span><strong>240H</strong></div>
+              <div class="limit-row"><span>Direito</span><strong>320H</strong></div>
+              <div class="limit-row"><span>Medicina</span><strong>180H</strong></div>
+            </article>
+            <article class="card team-card">
+              <h3>Gestão de Equipe Acadêmica</h3>
+              <table>
+                <thead><tr><th>Usuário</th><th>Papel</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td>Ana Maria</td><td>Secretaria</td><td><span class="tag approved">Ativo</span></td></tr>
+                  <tr><td>José Lucas</td><td>Coordenador</td><td><span class="tag approved">Ativo</span></td></tr>
+                  <tr><td>Beatriz P.</td><td>Visualizador</td><td><span class="tag pending">Suspenso</span></td></tr>
+                </tbody>
+              </table>
+            </article>
+            <article class="card security-card">
+              <h3>Logs de Segurança</h3>
+              <p>[14:30] Alerta de limite de Engenharia Civil / 240h</p>
+              <p>[12:15] Novo usuário cadastrado</p>
+              <p>[09:02] Backup automático concluído</p>
+            </article>
+            <article class="card export-card">
+              <h3>Exportação Consolidada de Regras</h3>
+              <p>Gere um relatório PDF com todas as regras de validação vigentes no sistema.</p>
+              <button class="btn-link">BAIXAR RELATÓRIO</button>
+            </article>
+          </div>
+        </section>
+
+        <section id="studentsView" class="view">
+          <h2>Alunos</h2>
+          <div class="card">
+            <p>Área reservada para gestão de alunos e acompanhamento de carga horária.</p>
+          </div>
+        </section>
+
+        <section id="rulesView" class="view">
+          <h2>Regulamento</h2>
+          <div class="card">
+            <p>Publicação de regras institucionais e critérios de validação dos certificados.</p>
+          </div>
+        </section>
+        <footer class="panel-footer">
+          <span>Privacidade</span>
+          <span>Termos de Uso</span>
+          <span>Suporte Técnico</span>
+          <strong>Senac Brasil</strong>
+        </footer>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
