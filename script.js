@@ -1,51 +1,42 @@
-const loginScreen = document.getElementById("loginScreen");
-const panelScreen = document.getElementById("panelScreen");
-const loginForm = document.getElementById("loginForm");
-const logoutBtn = document.getElementById("logoutBtn");
-
+const ls = document.getElementById("ls");
+const ps = document.getElementById("ps");
+const fab = document.getElementById("fab");
 const views = [...document.querySelectorAll(".view")];
-const sideButtons = [...document.querySelectorAll(".side-btn")];
-const tabs = [...document.querySelectorAll(".tab")];
+const sbBtns = [...document.querySelectorAll(".sb-btn")];
+const tabs = [...document.querySelectorAll(".tt")];
 
 function showPanel() {
-  loginScreen.classList.remove("is-active");
-  panelScreen.classList.add("is-active");
+  ls.classList.remove("on");
+  ps.classList.add("on");
+  fab.style.display = "flex";
+  setV("dv");
 }
 
 function showLogin() {
-  panelScreen.classList.remove("is-active");
-  loginScreen.classList.add("is-active");
+  ps.classList.remove("on");
+  ls.classList.add("on");
+  fab.style.display = "none";
 }
 
-function setActiveView(viewId) {
-  views.forEach((view) => {
-    view.classList.toggle("is-active", view.id === viewId);
-  });
-
-  sideButtons.forEach((button) => {
-    button.classList.toggle("is-active", button.dataset.view === viewId);
-  });
-
-  tabs.forEach((tab) => {
-    tab.classList.toggle("is-active", tab.dataset.view === viewId);
-  });
+function setV(id) {
+  views.forEach((v) => v.classList.toggle("on", v.id === id));
+  sbBtns.forEach((b) => b.classList.toggle("on", b.dataset.v === id));
+  tabs.forEach((t) => t.classList.toggle("on", t.dataset.v === id));
 }
 
-loginForm.addEventListener("submit", (event) => {
-  event.preventDefault();
+document.getElementById("lf").addEventListener("submit", (e) => {
+  e.preventDefault();
   showPanel();
 });
-
-logoutBtn.addEventListener("click", () => {
-  showLogin();
+document.getElementById("lb").addEventListener("click", showLogin);
+document.getElementById("bnp").addEventListener("click", () => setV("pv"));
+sbBtns.forEach((b) => b.addEventListener("click", () => setV(b.dataset.v)));
+tabs.forEach((t) => t.addEventListener("click", () => setV(t.dataset.v)));
+document.querySelectorAll(".tg").forEach((b) => {
+  b.addEventListener("click", function () {
+    this.closest(".tgg")
+      .querySelectorAll(".tg")
+      .forEach((x) => x.classList.remove("on"));
+    this.classList.add("on");
+  });
 });
-
-sideButtons.forEach((button) => {
-  button.addEventListener("click", () => setActiveView(button.dataset.view));
-});
-
-tabs.forEach((tab) => {
-  tab.addEventListener("click", () => setActiveView(tab.dataset.view));
-});
-
-setActiveView("dashboardView");
